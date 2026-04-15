@@ -1,328 +1,189 @@
 # AI-Powered-Document-Assistant
 
-### Retrieval-Augmented Generation (RAG) System with Google Drive Integration
+AI-Powered-Document-Assistant is a full-stack local RAG web application that lets users ask questions about documents stored on their computer.
 
-## Project Overview
+Instead of relying on a static FAQ or manual keyword search, the app indexes local files, retrieves the most relevant passages with vector search and reranking, and uses a locally hosted Ollama model to generate grounded answers with source references.
 
-This project implements a **Retrieval-Augmented Generation (RAG) system** that allows users to ask natural language questions about documents stored in their **Google Drive**. Users connect a Google account and select a folder that acts as their **personal knowledge base**. The system retrieves relevant information from the user's documents and uses a locally hosted large language model (LLM) to generate answers grounded in those documents.
+## Features
 
-The goal of this project is to demonstrate how modern generative AI systems can be combined with **document retrieval, embeddings, and language models** to build a practical AI application that improves access to personal information.
+- Ask natural language questions about local documents
+- Build a searchable knowledge base from a folder on your machine
+- Retrieval-Augmented Generation (RAG) pipeline
+- Semantic embeddings for document search
+- FAISS vector storage for fast similarity lookup
+- Cross-encoder reranking for improved retrieval quality
+- Source citations included with responses
+- Automatic refresh if indexed source files change
+- Evaluation endpoint for batch question testing
+- Full-stack architecture
+  - Python FastAPI backend
+  - HTML / CSS / JavaScript frontend
 
----
+## Tech Stack
 
-# Problem Statement
+### Frontend
 
-Modern users store large amounts of information in cloud storage platforms like Google Drive. Finding specific information within these documents often requires manually searching through multiple files.
+- HTML
+- CSS
+- JavaScript
 
-Traditional search tools rely on keyword matching and cannot:
+### Backend
 
-* answer complex questions
-* synthesize information across documents
-* understand context or semantics
+- Python
+- FastAPI
+- Uvicorn
+- Sentence Transformers
+- FAISS
+- NumPy
+- PyPDF
+- Requests
+- Transformers
+- Torch
 
-This project addresses this problem by building an AI assistant capable of answering questions using the user's own documents as context.
+### Local AI / Models
 
----
+- Ollama
+- `BAAI/bge-small-en-v1.5` for embeddings
+- `cross-encoder/ms-marco-MiniLM-L-6-v2` for reranking
+- `qwen2.5:3b` via Ollama for answer generation
 
-# Project Goals
+## Installation & Setup
 
-The primary goals of this project are to:
+### 1. Clone the Repository
 
-1. Build a multi-user AI system that connects to Google Drive folders.
-2. Implement a Retrieval-Augmented Generation (RAG) pipeline.
-3. Allow users to ask questions about their personal document collections.
-4. Ensure answers are grounded in retrieved document content.
-5. Evaluate system performance and accuracy under different configurations.
-
----
-
-# Key Features
-
-## Google Drive Integration
-
-Users authenticate with Google and grant permission to access their Google Drive.
-
-The system can:
-
-* access a specified folder
-* retrieve documents from the folder
-* process supported file types
-
-Supported document formats include:
-
-* Google Docs
-* PDF
-* TXT
-* Markdown
-
----
-
-## Automatic Knowledge Base Creation
-
-Documents retrieved from Google Drive are automatically processed:
-
-1. Documents are downloaded.
-2. Text is extracted.
-3. Documents are split into smaller chunks.
-4. Chunks are converted into vector embeddings.
-5. Embeddings are stored in a vector database.
-
-This allows efficient semantic search over the document collection.
-
----
-
-## Retrieval-Augmented Generation (RAG)
-
-When a user asks a question:
-
-1. The question is converted into an embedding.
-2. The system retrieves the most relevant document chunks.
-3. Retrieved content is passed to a language model.
-4. The language model generates an answer grounded in the retrieved text.
-
-This approach reduces hallucination and ensures responses are based on real documents.
-
----
-
-## Source Citations
-
-Responses include references to the source documents that contributed to the answer. This allows users to verify information and increases system transparency.
-
-Example output:
-
-```
-Answer:
-The project deadline is May 2.
-
-Sources:
-Project_Syllabus.pdf (Page 3)
-Meeting_Notes.docx (Paragraph 2)
+```bash
+git clone <your-repo-url>
+cd AI-Powered-Document-Assistant
 ```
 
----
+### 2. Create Virtual Environment
 
-## Multi-User System
+Mac / Linux
 
-The system supports multiple users.
-
-Each user has:
-
-* their own Google Drive connection
-* their own document knowledge base
-* isolated vector embeddings
-
-This ensures user data remains separate.
-
----
-
-# System Architecture
-
-```
-User
- ↓
-Web Interface
- ↓
-Authentication (Google OAuth)
- ↓
-Backend API
- ↓
-Google Drive API
- ↓
-Document Processing Pipeline
- ↓
-Text Chunking
- ↓
-Embedding Generation
- ↓
-Vector Database
- ↓
-Retrieval-Augmented Generation
- ↓
-LLM Response
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
 ```
 
----
+Windows
 
-# Technology Stack
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
 
-## Backend
+### 3. Install Dependencies
 
-* Python
-* FastAPI (API framework)
+```bash
+pip install -r requirements.txt
+```
 
-Responsibilities:
+### 4. Install and Start Ollama
+
+Make sure Ollama is installed, then pull the model used by this project:
+
+```bash
+ollama pull qwen2.5:3b
+```
 
-* authentication
-* document processing
-* RAG pipeline
-* API endpoints
-
----
-
-## Frontend
-
-* React or lightweight web UI
-
-Responsibilities:
-
-* user login
-* folder selection
-* question input
-* displaying answers
-
----
-
-## Language Model
-
-The system runs a local open-source LLM rather than relying on paid APIs (TBD)
-
-Advantages:
-
-* reduced cost
-* improved privacy
-* full control over the model
-
----
-
-## Embeddings
-
-Documents are converted into vector embeddings that capture semantic meaning. These embeddings allow the system to retrieve the most relevant text passages for a given query.
-
----
-
-## Vector Database
-
-A vector search system stores embeddings and enables fast similarity search across document chunks.
-
----
-
-# Retrieval-Augmented Generation Pipeline
-
-The RAG pipeline consists of several stages.
-
-## 1. Document Retrieval
-
-Documents are retrieved from the user's Google Drive folder.
-
-## 2. Text Extraction
-
-Text content is extracted from each document.
-
-## 3. Document Chunking
-
-Documents are divided into smaller segments (e.g., 300–500 tokens).
-
-Chunking improves retrieval accuracy.
-
-## 4. Embedding Generation
-
-Each chunk is converted into a numerical vector representing its semantic meaning.
-
-## 5. Vector Storage
-
-Embeddings are stored in a vector database.
-
-## 6. Query Processing
-
-When a question is asked:
-
-* the query is embedded
-* similar document chunks are retrieved
-
-## 7. Response Generation
-
-The language model generates a response using the retrieved context.
-
----
-
-# Evaluation Plan
-
-To evaluate the system, several experiments will be conducted.
-
-## Experiment 1: Chunk Size Impact
-
-Test different chunk sizes to measure how retrieval performance changes.
-
-Examples:
-
-* 200 tokens
-* 500 tokens
-* 1000 tokens
-
-Metrics:
-
-* response accuracy
-* retrieval relevance
-
----
-
-## Experiment 2: RAG vs Non-RAG
-
-Compare answers generated:
-
-1. With document retrieval
-2. Without document retrieval
-
-Goal:
-
-Measure how retrieval improves factual accuracy and reduces hallucinations.
-
----
-
-## Experiment 3: Retrieval Quality
-
-Evaluate whether the retrieved documents actually contain the correct information needed to answer the question.
-
-Metrics:
-
-* retrieval precision
-* retrieval recall
-
----
-
-# Security and Privacy Considerations
-
-User data must be handled responsibly.
-
-Key considerations:
-
-* OAuth authentication ensures secure login.
-* Access tokens are stored securely.
-* Users can only access their own documents.
-* Document data is not shared between users.
-
----
-
-# Potential Extensions
-
-Future improvements could include:
-
-* automatic folder synchronization
-* document change detection
-* conversation memory
-* improved ranking algorithms
-* support for additional file formats
-
----
-
-# Expected Outcomes
-
-The final system will demonstrate:
-
-* a functional AI application
-* integration of generative AI with external data sources
-* a scalable architecture for personal knowledge retrieval
-
-Users will be able to interact with their personal documents through natural language queries.
-
----
-
-# Deliverables
-
-The final project will include:
-
-1. Source code
-2. System documentation
-3. Evaluation results
-4. Demonstration of the working application
-
+Start Ollama:
+
+```bash
+ollama serve
+```
+
+### 5. Configure Environment Variables
+
+This project already includes a `.env` file. The default configuration is:
+
+```env
+APP_NAME=Local AI Document Assistant
+APP_VERSION=0.1.0
+DATA_DIR=./data
+CHUNK_SIZE=500
+CHUNK_OVERLAP=100
+EMBEDDING_MODEL=BAAI/bge-small-en-v1.5
+TOP_K=5
+MIN_SOURCE_SIMILARITY_SCORE=0.35
+RETRIEVAL_CANDIDATES=15
+RERANKER_MODEL=cross-encoder/ms-marco-MiniLM-L-6-v2
+OLLAMA_BASE_URL=http://localhost:11434
+OLLAMA_MODEL=qwen2.5:3b
+LOG_LEVEL=INFO
+```
+
+### 6. Run the Backend Server
+
+```bash
+python -m uvicorn app.main:app --reload
+```
+
+You should see the app running at:
+
+```text
+http://127.0.0.1:8000
+```
+
+### 7. Open the Web App
+
+Open this URL in your browser:
+
+```text
+http://127.0.0.1:8000
+```
+
+## How to Use
+
+1. Start Ollama
+2. Start the FastAPI server
+3. Open the web app in your browser
+4. Enter a local folder path containing `.txt` or `.pdf` files
+5. Click `Build Knowledge Base`
+6. Ask a question about the indexed documents
+7. Review the answer and source citations
+
+Example folder to test with:
+
+```text
+sample_docs
+```
+
+## API Endpoints
+
+- `GET /health` checks server status
+- `POST /ingest` indexes a local folder
+- `POST /query` asks a question against indexed documents
+- `POST /evaluate` runs a batch evaluation from a JSON file
+
+## Supported File Types
+
+- PDF
+- TXT
+
+## Project Structure
+
+```text
+AI-Powered-Document-Assistant/
+│
+├── app/
+│   ├── api.py               # FastAPI routes
+│   ├── core.py              # Ingestion, retrieval, reranking, and RAG pipeline
+│   ├── main.py              # FastAPI app entrypoint
+│   ├── models.py            # Pydantic models and settings
+│   └── static/
+│       ├── app.js           # Frontend logic
+│       ├── index.html       # Web interface
+│       └── styles.css       # Styling
+│
+├── data/                    # Saved vector index and chunk metadata
+├── sample_docs/             # Sample documents and evaluation files
+├── .env                     # Environment configuration
+├── requirements.txt         # Python dependencies
+└── README.md
+```
+
+## Notes
+
+- The current implementation works with local folders, not Google Drive
+- Answers are grounded in indexed content, but output quality depends on the documents and local model
+- The first run may take longer because embedding and reranking models need to be downloaded

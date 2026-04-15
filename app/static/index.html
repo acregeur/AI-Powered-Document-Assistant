@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local AI Document Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div>
+          <h1>AI Document Assistant</h1>
+        </div>
+      </div>
+
+      <section class="panel">
+        <h2>Ingest Folder</h2>
+        <label class="field">
+          <span>Folder Path</span>
+          <input id="folderPath" type="text" placeholder="C:\Documents\KnowledgeBase">
+        </label>
+        <button id="ingestButton" class="secondary-button" type="button">Build Knowledge Base</button>
+        <p id="ingestStatus" class="status-text">No folder indexed in this browser session yet.</p>
+      </section>
+
+      <section class="panel subtle">
+        <h2>How It Works</h2>
+        <p>The assistant answers from your local documents only. Edit files in the indexed folder and ask again to pick up changes automatically.</p>
+      </section>
+    </aside>
+
+    <main class="chat-layout">
+      <header class="chat-header">
+        <div>
+          <p class="eyebrow">Grounded Chat</p>
+          <h2>Ask questions about your local files</h2>
+        </div>
+      </header>
+
+      <section id="chatThread" class="chat-thread">
+        <article class="message assistant welcome">
+          <div class="avatar">AI</div>
+          <div class="message-card">
+            <p class="message-label">Assistant</p>
+            <div class="message-body">
+              <p>Ready when you are. Point me at a local folder, build the index, and then ask questions the way you would in a normal chat interface.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <form id="chatForm" class="composer">
+        <label class="composer-shell">
+          <textarea id="questionInput" rows="1" placeholder="Ask about the indexed documents..." required></textarea>
+        </label>
+        <div class="composer-actions">
+          <button id="sendButton" class="primary-button" type="submit">Send</button>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <template id="messageTemplate">
+    <article class="message">
+      <div class="avatar"></div>
+      <div class="message-card">
+        <p class="message-label"></p>
+        <div class="message-body"></div>
+        <div class="sources"></div>
+      </div>
+    </article>
+  </template>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

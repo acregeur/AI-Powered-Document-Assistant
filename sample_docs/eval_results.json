@@ -1,0 +1,376 @@
+{
+  "questions_file": "C:\\Users\\acregeur\\Documents\\New project\\sample_docs\\eval_questions.json",
+  "total_questions": 10,
+  "results": [
+    {
+      "id": "q1",
+      "question": "Who is Tianle Ma?",
+      "answer": "Tianle Ma is the instructor for CSI-4130/CSI-5130 Artificial Intelligence course.",
+      "sources": [
+        {
+          "filename": "CSI 5130 Artificial Intelligence Syllabus.pdf",
+          "chunk_index": 0,
+          "page_number": 1,
+          "similarity_score": 8.0
+        },
+        {
+          "filename": "GPT-OSS_ Model Implementation - Handout.pdf",
+          "chunk_index": 27,
+          "page_number": 17,
+          "similarity_score": 0.5288584232330322
+        },
+        {
+          "filename": "Modern Transformer Upgrades - Handout.pdf",
+          "chunk_index": 75,
+          "page_number": 51,
+          "similarity_score": 0.5097082853317261
+        },
+        {
+          "filename": "Modern Transformer Upgrades - Handout.pdf",
+          "chunk_index": 67,
+          "page_number": 46,
+          "similarity_score": 0.5041730999946594
+        },
+        {
+          "filename": "Modern Transformer Upgrades - Handout.pdf",
+          "chunk_index": 24,
+          "page_number": 16,
+          "similarity_score": 0.528347373008728
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Define BPE?",
+      "answer": "Byte-Pair Encoding (BPE) is the dominant tokenization algorithm in modern Large Language Models (LLMs). Originally a data compression algorithm (by Gage in 1994), it was adapted for Natural Language Processing by Sennrich et al. in 2016. The tokenizer is trained separately on your text corpus before model training begins. It starts with a base vocabulary of individual units (characters or bytes) and merges the most frequent adjacent token pairs into new tokens until the target vocabulary size is reached. At inference, the same merge rules are applied to tokenize any new text in order to maintain consistency throughout all phases of processing.",
+      "sources": [
+        {
+          "filename": "NLP & Tokenization - Handout.pdf",
+          "chunk_index": 7,
+          "page_number": 8,
+          "similarity_score": 4.0
+        },
+        {
+          "filename": "NLP & Tokenization - Handout.pdf",
+          "chunk_index": 8,
+          "page_number": 9,
+          "similarity_score": 2.0
+        },
+        {
+          "filename": "NLP & Tokenization - Handout.pdf",
+          "chunk_index": 9,
+          "page_number": 10,
+          "similarity_score": 2.0
+        },
+        {
+          "filename": "NLP & Tokenization - Handout.pdf",
+          "chunk_index": 49,
+          "page_number": 44,
+          "similarity_score": 0.5414594411849976
+        },
+        {
+          "filename": "NLP & Tokenization - Handout.pdf",
+          "chunk_index": 55,
+          "page_number": 48,
+          "similarity_score": 0.5991462469100952
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "What are the core features of PyTorch?",
+      "answer": "PyTorch's two core features are:\n1. Tensor Computing: N-dimensional arrays that run on GPUs.\n2. Automatic Differentiation: Computes gradients for you!",
+      "sources": [
+        {
+          "filename": "Lecture 4_ PyTorch In-Depth Tutorial - Handout.pdf",
+          "chunk_index": 5,
+          "page_number": 6,
+          "similarity_score": 12.0
+        },
+        {
+          "filename": "Computer Vision with PyTorch - Handout.pdf",
+          "chunk_index": 8,
+          "page_number": 9,
+          "similarity_score": 12.0
+        },
+        {
+          "filename": "Attention & Transformers - Handout.pdf",
+          "chunk_index": 35,
+          "page_number": 36,
+          "similarity_score": 0.7123643159866333
+        },
+        {
+          "filename": "Lecture 4_ PyTorch In-Depth Tutorial - Handout.pdf",
+          "chunk_index": 6,
+          "page_number": 7,
+          "similarity_score": 0.7167406678199768
+        },
+        {
+          "filename": "Computer Vision with PyTorch - Handout.pdf",
+          "chunk_index": 12,
+          "page_number": 13,
+          "similarity_score": 0.7505106925964355
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "What are the 4 phases of Monte Carlo Tree Search?",
+      "answer": "The 4 phases of Monte Carlo Tree Search (MCTS) are:\n1. Selection\n2. Expansion\n3. Simulation (rollout)\n4. Backpropagation",
+      "sources": [
+        {
+          "filename": "Lecture 11_ Search, Games, and MDPs - Handout.pdf",
+          "chunk_index": 22,
+          "page_number": 23,
+          "similarity_score": 28.0
+        },
+        {
+          "filename": "Course Review & The Future - Handout.pdf",
+          "chunk_index": 3,
+          "page_number": 4,
+          "similarity_score": 26.0
+        },
+        {
+          "filename": "Lecture 11_ Search, Games, and MDPs - Handout.pdf",
+          "chunk_index": 23,
+          "page_number": 24,
+          "similarity_score": 0.7552859783172607
+        },
+        {
+          "filename": "Lecture 11_ Search, Games, and MDPs - Handout.pdf",
+          "chunk_index": 24,
+          "page_number": 25,
+          "similarity_score": 0.7083750367164612
+        },
+        {
+          "filename": "Lecture 14_ Reward Signals \u2014 Preferences, Verification, DPO, and Process Rewards - Handout.pdf",
+          "chunk_index": 28,
+          "page_number": 26,
+          "similarity_score": 20.0
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "Explain DAPO's Four Fixes.",
+      "answer": "DAPO's Four Fixes are:\n1. Clip-Higher (Decoupled Clipping): use asymmetric clip bounds to increase exploration while maintaining stability.\n2. Dynamic Sampling: skip groups with identical rewards and oversample prompts to ensure a batch of informative groups.\n3. Token-Level Loss: normalize across all tokens in the batch equally to remove length bias, especially important for long Chain-of-Thought responses.\n4. Overlong Reward Shaping: mask truncated responses from loss entirely (to avoid noise) and add a linear soft length penalty as responses approach maximum length.",
+      "sources": [
+        {
+          "filename": "Lecture 13_ PPO, GRPO & DAPO \u2014 Policy Optimization for LLMs - Handout.pdf",
+          "chunk_index": 31,
+          "page_number": 29,
+          "similarity_score": 16.0
+        },
+        {
+          "filename": "Lecture 13_ PPO, GRPO & DAPO \u2014 Policy Optimization for LLMs - Handout.pdf",
+          "chunk_index": 1,
+          "page_number": 2,
+          "similarity_score": 8.0
+        },
+        {
+          "filename": "Lecture 13_ PPO, GRPO & DAPO \u2014 Policy Optimization for LLMs - Handout.pdf",
+          "chunk_index": 30,
+          "page_number": 28,
+          "similarity_score": 8.0
+        },
+        {
+          "filename": "Lecture 13_ PPO, GRPO & DAPO \u2014 Policy Optimization for LLMs - Handout.pdf",
+          "chunk_index": 33,
+          "page_number": 30,
+          "similarity_score": 6.0
+        },
+        {
+          "filename": "Lecture 13_ PPO, GRPO & DAPO \u2014 Policy Optimization for LLMs - Handout.pdf",
+          "chunk_index": 34,
+          "page_number": 31,
+          "similarity_score": 4.0
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "What makes up the grading for CSI 5130?",
+      "answer": "The grading for CSI 5130 consists of a project (40%) and assignments, with details on penalties for late submissions provided in the syllabus.",
+      "sources": [
+        {
+          "filename": "CSI 5130 Artificial Intelligence Syllabus.pdf",
+          "chunk_index": 0,
+          "page_number": 1,
+          "similarity_score": 8.0
+        },
+        {
+          "filename": "CSI 5130 Artificial Intelligence Syllabus.pdf",
+          "chunk_index": 1,
+          "page_number": 1,
+          "similarity_score": 6.0
+        },
+        {
+          "filename": "CSI 5130 Artificial Intelligence Syllabus.pdf",
+          "chunk_index": 5,
+          "page_number": 2,
+          "similarity_score": 0.6586284637451172
+        },
+        {
+          "filename": "Modern Transformer Upgrades - Handout.pdf",
+          "chunk_index": 83,
+          "page_number": 56,
+          "similarity_score": 0.5608843564987183
+        },
+        {
+          "filename": "CSI 5130 Artificial Intelligence Syllabus.pdf",
+          "chunk_index": 7,
+          "page_number": 3,
+          "similarity_score": 0.5675602555274963
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "question": "What are the instructor's office hours?",
+      "answer": "The instructor's office hours are from 3:00 PM - 4:00 PM Mondays, or by appointment.",
+      "sources": [
+        {
+          "filename": "CSI 5130 Artificial Intelligence Syllabus.pdf",
+          "chunk_index": 0,
+          "page_number": 1,
+          "similarity_score": 12.0
+        },
+        {
+          "filename": "CSI 5130 Artificial Intelligence Syllabus.pdf",
+          "chunk_index": 10,
+          "page_number": 4,
+          "similarity_score": 0.6146419048309326
+        },
+        {
+          "filename": "CSI 5130 Artificial Intelligence Syllabus.pdf",
+          "chunk_index": 6,
+          "page_number": 3,
+          "similarity_score": 12.0
+        },
+        {
+          "filename": "Lecture 4_ PyTorch In-Depth Tutorial - Handout.pdf",
+          "chunk_index": 28,
+          "page_number": 29,
+          "similarity_score": 0.5482239723205566
+        },
+        {
+          "filename": "Lecture 4_ PyTorch In-Depth Tutorial - Handout.pdf",
+          "chunk_index": 31,
+          "page_number": 32,
+          "similarity_score": 0.5231211185455322
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "question": "Where do the instructor's office hours take place?",
+      "answer": "The instructor's office hours take place in Zoom or EC 330 by appointment.",
+      "sources": [
+        {
+          "filename": "CSI 5130 Artificial Intelligence Syllabus.pdf",
+          "chunk_index": 0,
+          "page_number": 1,
+          "similarity_score": 12.0
+        },
+        {
+          "filename": "CSI 5130 Artificial Intelligence Syllabus.pdf",
+          "chunk_index": 6,
+          "page_number": 3,
+          "similarity_score": 10.0
+        },
+        {
+          "filename": "CSI 5130 Artificial Intelligence Syllabus.pdf",
+          "chunk_index": 11,
+          "page_number": 4,
+          "similarity_score": 0.5597285032272339
+        },
+        {
+          "filename": "CSI 5130 Artificial Intelligence Syllabus.pdf",
+          "chunk_index": 10,
+          "page_number": 4,
+          "similarity_score": 0.6002240180969238
+        },
+        {
+          "filename": "Lecture 4_ PyTorch In-Depth Tutorial - Handout.pdf",
+          "chunk_index": 28,
+          "page_number": 29,
+          "similarity_score": 0.528961718082428
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "question": "What days do we have class in CSI 5130?",
+      "answer": "Tuesdays & Thursdays",
+      "sources": [
+        {
+          "filename": "CSI 5130 Artificial Intelligence Syllabus.pdf",
+          "chunk_index": 0,
+          "page_number": 1,
+          "similarity_score": 6.0
+        },
+        {
+          "filename": "Lecture 2_ Machine Learning Basics - Handout.pdf",
+          "chunk_index": 29,
+          "page_number": 30,
+          "similarity_score": 0.6116876006126404
+        },
+        {
+          "filename": "CSI 5130 Artificial Intelligence Syllabus.pdf",
+          "chunk_index": 5,
+          "page_number": 2,
+          "similarity_score": 6.0
+        },
+        {
+          "filename": "GPT-OSS_ Model Implementation - Handout.pdf",
+          "chunk_index": 86,
+          "page_number": 53,
+          "similarity_score": 8.0
+        },
+        {
+          "filename": "Lecture 11_ Search, Games, and MDPs - Handout.pdf",
+          "chunk_index": 29,
+          "page_number": 30,
+          "similarity_score": 0.5909969806671143
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "What are the key components of reinforcement learning?",
+      "answer": "The key components of Reinforcement Learning include:\n- Agent: The learner or decision-maker.\n- Environment: The world it interacts with.\n- Action: A move the agent can make.\n- Reward: Feedback from the environment (positive or negative).\n- Policy: The strategy for choosing actions to maximize total reward.",
+      "sources": [
+        {
+          "filename": "Lecture 2_ Machine Learning Basics - Handout.pdf",
+          "chunk_index": 30,
+          "page_number": 31,
+          "similarity_score": 14.0
+        },
+        {
+          "filename": "Lecture 3_ From ML Basics to Deep Learning - Handout.pdf",
+          "chunk_index": 10,
+          "page_number": 11,
+          "similarity_score": 0.7815399169921875
+        },
+        {
+          "filename": "Lecture 2_ Machine Learning Basics - Handout.pdf",
+          "chunk_index": 27,
+          "page_number": 28,
+          "similarity_score": 18.0
+        },
+        {
+          "filename": "Course Review & The Future - Handout.pdf",
+          "chunk_index": 6,
+          "page_number": 7,
+          "similarity_score": 12.0
+        },
+        {
+          "filename": "CSI 5130 Artificial Intelligence Syllabus.pdf",
+          "chunk_index": 2,
+          "page_number": 1,
+          "similarity_score": 16.0
+        }
+      ]
+    }
+  ]
+}

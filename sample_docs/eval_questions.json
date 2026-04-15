@@ -1,0 +1,42 @@
+[
+  {
+    "id": "q1",
+    "question": "Who is Tianle Ma?"
+  },
+  {
+    "id": "q2",
+    "question": "Define BPE?"
+  },
+  {
+    "id": "q3",
+    "question": "What are the core features of PyTorch?"
+  },
+    {
+    "id": "q4",
+    "question": "What are the 4 phases of Monte Carlo Tree Search?"
+  },
+    {
+    "id": "q5",
+    "question": "Explain DAPO's Four Fixes."
+  },
+    {
+    "id": "q6",
+    "question": "What makes up the grading for CSI 5130?"
+  },
+    {
+    "id": "q7",
+    "question": "What are the instructor's office hours?"
+  },
+    {
+    "id": "q8",
+    "question": "Where do the instructor's office hours take place?"
+  },
+    {
+    "id": "q9",
+    "question": "What days do we have class in CSI 5130?"
+  },
+    {
+    "id": "q10",
+    "question": "What are the key components of reinforcement learning?"
+  }
+]
