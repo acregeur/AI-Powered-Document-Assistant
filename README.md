@@ -1,3 +1,7 @@
+# PRESENTATION VIDEO LINK
+
+https://youtu.be/aZBWIjpJ-3s
+
 # AI-Powered-Document-Assistant
 
 AI-Powered-Document-Assistant is a full-stack local RAG web application that lets users ask questions about documents stored on their computer.

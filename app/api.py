@@ -6,7 +6,6 @@ from fastapi import APIRouter, Depends, HTTPException
 
 from app.core import RAGPipeline
 from app.models import (
-    EvaluationRequest,
     EvaluationResponse,
     HealthResponse,
     IngestRequest,
@@ -67,14 +66,14 @@ def query_documents(
 
 @router.post("/evaluate", response_model=EvaluationResponse)
 def evaluate_documents(
-    request: EvaluationRequest,
+    settings: Settings = Depends(get_settings),
     pipeline: RAGPipeline = Depends(get_pipeline),
 ) -> EvaluationResponse:
     try:
         return pipeline.evaluate_questions(
-            questions_file=request.questions_file,
-            output_file=request.output_file,
-            top_k=request.top_k,
+            questions_file=settings.evaluation_questions_file,
+            output_file=settings.evaluation_output_file,
+            top_k=settings.evaluation_top_k,
         )
     except FileNotFoundError as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc

@@ -23,6 +23,9 @@ class Settings(BaseSettings):
     reranker_model: str = "cross-encoder/ms-marco-MiniLM-L-6-v2"
     ollama_base_url: str = "http://localhost:11434"
     ollama_model: str = "llama3.1"
+    evaluation_questions_file: Path = Field(default=Path("sample_docs/eval_questions.json"))
+    evaluation_output_file: Path = Field(default=Path("sample_docs/eval_results.json"))
+    evaluation_top_k: int | None = Field(default=None, ge=1, le=20)
     log_level: str = "INFO"
 
     model_config = SettingsConfigDict(
@@ -54,12 +57,6 @@ class IngestResponse(BaseModel):
 
 class QueryRequest(BaseModel):
     question: str = Field(min_length=1)
-    top_k: int | None = Field(default=None, ge=1, le=20)
-
-
-class EvaluationRequest(BaseModel):
-    questions_file: Path
-    output_file: Path
     top_k: int | None = Field(default=None, ge=1, le=20)
 
 
